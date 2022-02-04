@@ -60,7 +60,7 @@ app.get('/list_products', (req, res) => {
 app.get('/list_products/:itemId', (req, res) => {
   getCurrentReservedStockById(req.params.itemId)
     .then((item) => {
-      if (Object.keys(item).length !== 0) res.json(JSON.parse(item));
+      if (item !== null) res.json(JSON.parse(item));
       else res.json({ status: 'Product not found' });
     }).catch((err) => {
       console.log(err);
